@@ -14,8 +14,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @author zfldiv <zfldiv@163.com>
- * @date 2023-01-12 15:43
+ * @author zfldiv@163.com
  */
 public class CusLogLogbackAppender extends AppenderBase {
     @Override

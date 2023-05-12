@@ -4,7 +4,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author zfldiv <zfldiv@163.com>
+ * @author zfldiv@163.com
  */
 @Configuration
 @ComponentScan("com.midoujia.dingbot")

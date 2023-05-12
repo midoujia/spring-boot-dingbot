@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author zfldiv <zfldiv@163.com>
+ * @author zfldiv@163.com
  */
 @Validated
 @Component

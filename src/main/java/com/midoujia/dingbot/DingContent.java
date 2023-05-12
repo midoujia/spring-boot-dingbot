@@ -1,8 +1,7 @@
 package com.midoujia.dingbot;
 
 /**
- * @author zfldiv <zfldiv@163.com>
- * @date 2023-01-12 15:06
+ * @author zfldiv@163.com
  */
 public class DingContent {
 

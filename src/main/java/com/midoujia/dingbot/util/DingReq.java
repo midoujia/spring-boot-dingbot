@@ -20,7 +20,8 @@ import java.util.Map;
 
 /**
  * POST and GET util
- * @author zfldiv <zfldiv@163.com>
+ *
+ * @author zfldiv@163.com
  */
 public class DingReq {
 

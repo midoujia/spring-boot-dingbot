@@ -7,8 +7,8 @@ public class TestDemo {
     public void test() {
         DingBotApi dingBotApi = new DingBotService();
         String rep = dingBotApi.sendMarkdownMsgTest("https://oapi.dingtalk.com/robot/send",
-                "SECa1bd5ad2185bc25346982a1b370129badfe4e0cae371496bb50edcf844378f91",
-                "0abc91b514df6992436528d8cfc6f22bb53846b3b579730724898ee27101a5e9",
+                "SECaxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 "#### 北京天气 15:26分播报\n" +
                         "\n" +
                         "中雪，东北风 1级，空气良89，相对湿度 48%![screenshot](http://tukupic.tianqistatic.com/content/20221229/Fo1dokl6CErob8mQDfcCUTjB.jpg/nu)\n" +

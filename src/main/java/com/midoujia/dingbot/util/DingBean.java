@@ -7,7 +7,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 /**
- * @author zfldiv <zfldiv@163.com>
+ * @author zfldiv@163.com
  */
 @Component
 public class DingBean implements ApplicationContextAware {

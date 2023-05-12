@@ -3,7 +3,7 @@ package com.midoujia.dingbot;
 import java.util.List;
 
 /**
- * @author zfldiv <zfldiv@163.com>
+ * @author zfldiv@163.com
  */
 public interface DingBotApi {
 

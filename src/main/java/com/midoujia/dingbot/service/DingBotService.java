@@ -21,8 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author zfldiv <zfldiv@163.com>
- * @date 2023-01-12 11:54
+ * @author zfldiv@163.com
  */
 @Service("dingBotApi")
 public class DingBotService implements DingBotApi {
