@@ -1,0 +1,5 @@
+# Log file
+*.log
+.idea
+target
+*.iml
