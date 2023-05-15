@@ -71,7 +71,7 @@ ding:
 @Autowired
 private DingBotApi dingBotApi;
 或
-DingBotApi dingBotApi = SpringBeanFactory.getBean(DingBotApi.class);
+DingBotApi dingBotApi = DingBean.getBean(DingBotApi.class);
 
 ```
 
