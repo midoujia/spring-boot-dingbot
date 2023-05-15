@@ -5,8 +5,8 @@
 ```xml
 <dependency>
     <groupId>com.midoujia.dingbot</groupId>
-    <artifactId>dingbot</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <artifactId>spring-boot-dingbot</artifactId>
+    <version>1.0.0</version>
 </dependency>
 ```
 
