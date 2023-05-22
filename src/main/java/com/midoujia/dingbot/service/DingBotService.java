@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
@@ -32,51 +33,51 @@ public class DingBotService implements DingBotApi {
     private DingbotConfig dingbotConfig;
 
     @Override
-    public String sendMarkdownMsgTest(String botUrl, String botKey, String botToken, String content) {
+    public String sendMarkdownMsgTest(String botUrl, String botKey, String botToken, String content, List<String> mobileList) {
         Map<String, Object> markdownMap = new HashMap<>();
         markdownMap.put("title", "内容详情");
         markdownMap.put("text", content);
-        return send(botUrl, botKey, botToken, ContentType.Markdown, markdownMap, true);
+        return send(botUrl, botKey, botToken, ContentType.Markdown, markdownMap, true, mobileList);
     }
 
     @Override
-    public String sendTextMsg(String content) {
+    public String sendTextMsg(String content, List<String> mobileList) {
         Map<String, Object> textMap = new HashMap<>();
         textMap.put("content", content);
-        return send(dingbotConfig.getBotUrl(), dingbotConfig.getBotKey(), dingbotConfig.getBotToken(), ContentType.Text, textMap, true);
+        return send(dingbotConfig.getBotUrl(), dingbotConfig.getBotKey(), dingbotConfig.getBotToken(), ContentType.Text, textMap, true, mobileList);
     }
 
     @Override
-    public String sendLinkMsg(String title, String content, String picUrl, String messageUrl) {
+    public String sendLinkMsg(String title, String content, String picUrl, String messageUrl, List<String> mobileList) {
         Map<String, Object> linksMap = new HashMap<>();
         linksMap.put("title", title);
         linksMap.put("text", content);
         linksMap.put("picUrl", picUrl);
         linksMap.put("messageUrl", messageUrl);
-        return send(dingbotConfig.getBotUrl(), dingbotConfig.getBotKey(), dingbotConfig.getBotToken(), ContentType.Link, linksMap, true);
+        return send(dingbotConfig.getBotUrl(), dingbotConfig.getBotKey(), dingbotConfig.getBotToken(), ContentType.Link, linksMap, true, mobileList);
     }
 
     @Override
-    public String sendMarkdownMsg(String title, String content) {
+    public String sendMarkdownMsg(String title, String content, List<String> mobileList) {
         Map<String, Object> markdownMap = new HashMap<>();
         markdownMap.put("title", title);
         markdownMap.put("text", content);
-        return send(dingbotConfig.getBotUrl(), dingbotConfig.getBotKey(), dingbotConfig.getBotToken(), ContentType.Markdown, markdownMap, true);
+        return send(dingbotConfig.getBotUrl(), dingbotConfig.getBotKey(), dingbotConfig.getBotToken(), ContentType.Markdown, markdownMap, true, mobileList);
     }
 
     @Override
-    public String sendActionCardMsg(String title, String content, String singleURL) {
+    public String sendActionCardMsg(String title, String content, String singleURL, List<String> mobileList) {
         Map<String, Object> actionCardMap = new HashMap<>();
         actionCardMap.put("title", title);
         actionCardMap.put("text", content);
         actionCardMap.put("btnOrientation", "0");
         actionCardMap.put("singleTitle", "阅读全文");
         actionCardMap.put("singleURL", singleURL);
-        return send(dingbotConfig.getBotUrl(), dingbotConfig.getBotKey(), dingbotConfig.getBotToken(), ContentType.ActionCard, actionCardMap, true);
+        return send(dingbotConfig.getBotUrl(), dingbotConfig.getBotKey(), dingbotConfig.getBotToken(), ContentType.ActionCard, actionCardMap, true, mobileList);
     }
 
     @Override
-    public String sendFeedCardMsg(List<DingContent> dingContents) {
+    public String sendFeedCardMsg(List<DingContent> dingContents, List<String> mobileList) {
         // FeedCard类型
         Map<String, Object> feedCardMap = new HashMap<>();
 
@@ -89,10 +90,10 @@ public class DingBotService implements DingBotApi {
             links.add(link);
         }
         feedCardMap.put("links", links);
-        return send(dingbotConfig.getBotUrl(), dingbotConfig.getBotKey(), dingbotConfig.getBotToken(), ContentType.FeedCard, feedCardMap, true);
+        return send(dingbotConfig.getBotUrl(), dingbotConfig.getBotKey(), dingbotConfig.getBotToken(), ContentType.FeedCard, feedCardMap, true, mobileList);
     }
 
-    private String send(String botUrl, String botKey, String botToken, ContentType contentType, Map<String, Object> content, boolean isAtAll) {
+    private String send(String botUrl, String botKey, String botToken, ContentType contentType, Map<String, Object> content, boolean isAtAll, List<String> mobileList) {
         String timestamp = String.valueOf(System.currentTimeMillis());
         String sign = dingHmacSHA256(timestamp, botKey);
         String dingUrl = botUrl + "?access_token=" + botToken + "&timestamp=" + timestamp + "&sign=" + sign;
@@ -101,7 +102,7 @@ public class DingBotService implements DingBotApi {
         //1.是否通知所有人
         atMap.put("isAtAll", isAtAll);
         //2.通知具体人的手机号码列表
-        atMap.put("atMobiles", new ArrayList<String>());
+        atMap.put("atMobiles", CollectionUtils.isEmpty(mobileList) ? new ArrayList<>() : mobileList);
 
         // 消息体内容
         Map<String, Object> reqMap = new HashMap<>();

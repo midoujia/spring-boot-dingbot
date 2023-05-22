@@ -36,7 +36,7 @@ public class CusLogLogbackAppender extends AppenderBase {
                         for (String word : triggerWords) {
                             if (formattedMessage != null && isContained(word, formattedMessage)) {
                                 String active = DingBean.getEnvironment().getProperty("spring.profiles.active");
-                                dingBotApi.sendTextMsg(active + "：" + formattedMessage + "\n" + throwable.toString());
+                                dingBotApi.sendTextMsg(active + "：" + formattedMessage + "\n" + throwable.toString(), null);
                                 break;
                             }
                         }
