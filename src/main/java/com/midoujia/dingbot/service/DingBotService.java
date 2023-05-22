@@ -33,6 +33,11 @@ public class DingBotService implements DingBotApi {
     private DingbotConfig dingbotConfig;
 
     @Override
+    public String sendMarkdownMsgTest(String botUrl, String botKey, String botToken, String content) {
+        return sendMarkdownMsgTest(botUrl, botKey, botToken, content, null);
+    }
+
+    @Override
     public String sendMarkdownMsgTest(String botUrl, String botKey, String botToken, String content, List<String> mobileList) {
         Map<String, Object> markdownMap = new HashMap<>();
         markdownMap.put("title", "内容详情");
@@ -41,10 +46,20 @@ public class DingBotService implements DingBotApi {
     }
 
     @Override
+    public String sendTextMsg(String content) {
+        return sendTextMsg(content, null);
+    }
+
+    @Override
     public String sendTextMsg(String content, List<String> mobileList) {
         Map<String, Object> textMap = new HashMap<>();
         textMap.put("content", content);
         return send(dingbotConfig.getBotUrl(), dingbotConfig.getBotKey(), dingbotConfig.getBotToken(), ContentType.Text, textMap, true, mobileList);
+    }
+
+    @Override
+    public String sendLinkMsg(String title, String content, String picUrl, String messageUrl) {
+        return sendLinkMsg(title, content, picUrl, messageUrl, null);
     }
 
     @Override
@@ -58,11 +73,21 @@ public class DingBotService implements DingBotApi {
     }
 
     @Override
+    public String sendMarkdownMsg(String title, String content) {
+        return sendMarkdownMsg(title, content, null);
+    }
+
+    @Override
     public String sendMarkdownMsg(String title, String content, List<String> mobileList) {
         Map<String, Object> markdownMap = new HashMap<>();
         markdownMap.put("title", title);
         markdownMap.put("text", content);
         return send(dingbotConfig.getBotUrl(), dingbotConfig.getBotKey(), dingbotConfig.getBotToken(), ContentType.Markdown, markdownMap, true, mobileList);
+    }
+
+    @Override
+    public String sendActionCardMsg(String title, String content, String singleURL) {
+        return sendActionCardMsg(title, content, singleURL, null);
     }
 
     @Override
@@ -74,6 +99,11 @@ public class DingBotService implements DingBotApi {
         actionCardMap.put("singleTitle", "阅读全文");
         actionCardMap.put("singleURL", singleURL);
         return send(dingbotConfig.getBotUrl(), dingbotConfig.getBotKey(), dingbotConfig.getBotToken(), ContentType.ActionCard, actionCardMap, true, mobileList);
+    }
+
+    @Override
+    public String sendFeedCardMsg(List<DingContent> dingContents) {
+        return sendFeedCardMsg(dingContents, null);
     }
 
     @Override
