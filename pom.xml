@@ -6,7 +6,7 @@
 
     <groupId>com.midoujia.dingbot</groupId>
     <artifactId>spring-boot-dingbot</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.3</version>
     <packaging>jar</packaging>
     <name>spring-boot-dingbot</name>
     <description>钉钉群机器人发消息插件</description>
