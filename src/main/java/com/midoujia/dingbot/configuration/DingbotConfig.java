@@ -21,7 +21,7 @@ public class DingbotConfig {
 
     private String botToken = "xxxxxxxxxxxxxxxxxxxxxxxxx";
 
-    /** 是否开启机器人默认：true */
+    /** 是否开启机器人默认：false */
     private boolean botEnabled = false;
 
     /** 触发词 */
