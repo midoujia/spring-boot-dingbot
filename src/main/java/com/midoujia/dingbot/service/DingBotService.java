@@ -130,7 +130,7 @@ public class DingBotService implements DingBotApi {
 
         Map<String, Object> atMap = new HashMap<>();
         //1.是否通知所有人
-        atMap.put("isAtAll", !CollectionUtils.isEmpty(mobileList) && isAtAll);
+        atMap.put("isAtAll", !CollectionUtils.isEmpty(mobileList) ? false : isAtAll);
         //2.通知具体人的手机号码列表
         atMap.put("atMobiles", CollectionUtils.isEmpty(mobileList) ? new ArrayList<>() : mobileList);
 
