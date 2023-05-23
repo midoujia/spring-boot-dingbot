@@ -6,7 +6,7 @@
 <dependency>
     <groupId>com.midoujia.dingbot</groupId>
     <artifactId>spring-boot-dingbot</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.6</version>
 </dependency>
 ```
 
@@ -52,7 +52,7 @@ ding:
 <dependency>
     <groupId>com.midoujia.dingbot</groupId>
     <artifactId>spring-boot-dingbot</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.6</version>
 </dependency>
 ```
 
